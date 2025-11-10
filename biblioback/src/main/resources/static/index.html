@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css">
+    <title>ToDo List Simplificado</title>
+</head>
+
+<body>
+    <h1>To Do List</h1>
+
+    <!-- LOGIN -->
+    <div id="login">
+        <h2>Login</h2>
+        <input id="email" placeholder="Email" />
+        <input id="senha" type="password" placeholder="Senha" />
+        <button onclick="login()">Entrar</button>
+    </div>
+
+    <!-- APP -->
+    <div id="app" style="display:none;">
+        <h2>Minhas Tarefas</h2>
+
+        <button onclick="loadTasks()">Recarregar</button>
+        <button onclick="logout()" style="background: red; color: white;">Sair</button>
+
+        <ul id="lista"></ul>
+
+        <h3>Criar Tarefa</h3>
+        <input id="titulo" placeholder="Título" />
+        <input id="descricao" placeholder="Descrição" />
+        <select id="prioridade">
+            <option value="BAIXA">Baixa</option>
+            <option value="MEDIA" selected>Média</option>
+            <option value="ALTA">Alta</option>
+        </select>
+        <button onclick="createTask()">Criar</button>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
