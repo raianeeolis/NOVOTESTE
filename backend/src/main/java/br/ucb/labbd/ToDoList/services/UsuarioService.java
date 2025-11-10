@@ -74,17 +74,28 @@ public class UsuarioService {
     @Transactional
     public String login(String email, String senha) {
 
+        System.out.println("\n-------------------------------------");
+        System.out.println("DEBUG LOGIN: Tentativa para: " + email); 
+
         Optional<Usuario> ou = usuarioRepo.findByEmail(email);
 
         if (ou.isEmpty()) {
+            System.out.println("DEBUG LOGIN: Usuário NÃO encontrado no MySQL."); 
             return null; 
         }
 
         Usuario u = ou.get();
 
+        System.out.println("DEBUG LOGIN: Senha digitada: " + senha);
+        System.out.println("DEBUG LOGIN: Hash no Banco: " + u.getSenhaHash());
+        System.out.println("-------------------------------------\n");
+
         if (!passwordEncoder.matches(senha, u.getSenhaHash())) {
+            System.out.println("DEBUG LOGIN: SENHA INCORRETA. Falha BCrypt."); 
             return null; 
         }
+        
+        System.out.println("DEBUG LOGIN: LOGIN BEM-SUCEDIDO."); 
 
         String token = UUID.randomUUID().toString();
 
